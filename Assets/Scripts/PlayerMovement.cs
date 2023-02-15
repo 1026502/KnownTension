@@ -11,13 +11,16 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundLayerMask;
     public float jumpHeight = 1f;
+    public Light playerLight;
+    public AudioSource lightSound;
     Vector3 velocity;
     bool isGrounded;
+    bool lightStatus;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        lightStatus = true;
     }
 
     // Update is called once per frame
@@ -45,5 +48,24 @@ public class PlayerMovement : MonoBehaviour
        velocity.y += gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
+
+        if (Input.GetButtonDown("Interact"))
+        {
+            lightSound.Play();
+
+            if (lightStatus == true)
+            {
+                
+                playerLight.enabled = false;
+                lightStatus = false;
+            }
+            else
+            {
+                
+                playerLight.enabled = true;
+                lightStatus = true;
+
+            }
+        }
     }
 }
