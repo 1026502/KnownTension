@@ -22,6 +22,7 @@ public class KeyScript : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             controller.playerHasKey = true;
+            controller.StartCoroutine(controller.TextTrigger());
             Debug.Log("key has been picked up!");
             Destroy(gameObject);
         }
@@ -32,4 +33,7 @@ public class KeyScript : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 4f);
     }
+
+
+    
 }

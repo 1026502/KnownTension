@@ -17,7 +17,7 @@ public class PlayerLook : MonoBehaviour
         mouseSens = 1000f;
 #endif
 #if UNITY_WEBGL
-        mouseSens = 1f;
+        mouseSens = 50f;
 #endif
         Cursor.lockState = CursorLockMode.Locked;
     }
